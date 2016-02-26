@@ -3,11 +3,11 @@
 # apt-key adv --list-public-keys --with-fingerprint --with-colons
 proxmox_repositories_key:
 
-  - id: "BE257BAA5D406D01157D323EC23AC7F49887F95A"
-    keyserver: "pgp.mit.edu"
+  - url: "http://download.proxmox.com/debian/key.asc"
 
 proxmox_repositories:
 
-  - repo: 'deb http://download.proxmox.com/debian jessie pve-no-subscription'
+  - {repo: 'deb http://download.proxmox.com/debian jessie pve-no-subscription'}
+  - {repo: 'deb https://enterprise.proxmox.com/debian jessie pve-enterprise', state: 'absent' }
 
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2

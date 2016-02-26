@@ -1,0 +1,12 @@
+---
+
+- name: install
+  include: install.yml
+  when: role_proxmox_register_install is not defined
+
+- name: install register
+  set_fact:
+    role_proxmox_register_install: ""
+  when: role_proxmox_register_install is not defined
+
+## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
