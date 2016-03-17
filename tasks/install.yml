@@ -17,6 +17,9 @@
     src: 'pvemanagerlib.js.diff'
     dest: '/usr/share/pve-manager/ext4/pvemanagerlib.js'
 
-
+- name: rm deb list
+  file:
+    state: absent
+    path: '/etc/apt/sources.list.d/pve-enterprise.list'
 
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
