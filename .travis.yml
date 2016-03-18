@@ -1,0 +1,39 @@
+---
+
+sudo: True
+language: 'python'
+python: '2.7'
+services:
+  - docker
+
+virtualenv:
+    system_site_packages: true
+
+env:
+  - ANSIBLE_VER=v2.0.0.2-1
+  - ANSIBLE_VER=v2.0.1.0-1
+
+before_install:
+  - env
+  - docker info
+  - docker version
+
+  - git clone --recursive --depth 1 https://github.com/le9i0nx/ansible-role-test
+  - git clone --recursive --depth 1 https://github.com/le9i0nx/ansible-role-data  test
+  - git clone --recursive --depth 1 https://github.com/le9i0nx/ansible-root       test/default/root
+  - python ansible-role-test/bin/virt.py
+
+  - pip install git+https://github.com/ansible/ansible.git@$ANSIBLE_VER
+  - ansible --version
+
+  - ansible all -m setup -u root
+  - ansible-playbook /etc/ansible/test.yml --diff
+
+script:
+  - sleep 1
+
+notifications:
+  email:
+    on_failure: change
+
+## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
