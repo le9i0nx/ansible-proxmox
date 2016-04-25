@@ -15,7 +15,7 @@
 - name: apply patch
   patch:
     src: 'pvemanagerlib.js.diff'
-    dest: '/usr/share/pve-manager/ext4/pvemanagerlib.js'
+    dest: '/usr/share/pve-manager/ext6/pvemanagerlib.js'
 
 - name: rm deb list
   file:
