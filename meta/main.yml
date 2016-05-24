@@ -1,6 +1,34 @@
 ---
 
-dependencies: []
+dependencies:
+
+    - role: debops.apt
+      tags: [ 'role::apt' ]
+      apt__host_keys:
+        - '{{ proxmox_repositories_key }}'
+      apt__host_repositories:
+        - '{{ proxmox_repositories }}'
+      apt__base_packages:
+        - 'ed'
+        - 'python'
+        - 'python-apt'
+        - 'lsb-release'
+        - 'make'
+        - 'sudo'
+        - 'gnupg-curl'
+        - 'git'
+        - 'wget'
+        - 'curl'
+        - 'rsync'
+        - 'bridge-utils'
+        - 'openssh-server'
+        - 'bsdutils'
+        - 'python-pycurl'
+        - 'python-httplib2'
+        - 'apt-transport-https'
+        - 'acl'
+        - 'python-pip'
+
 
 galaxy_info:
   author: 'Aleksej Gavrilov'
