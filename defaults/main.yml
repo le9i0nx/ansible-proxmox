@@ -1,5 +1,15 @@
 ---
 
+# Enable execution of ``le9i0nx.syncthing`` role dependencies. This variable can be
+# used in playbooks to disable hardcoded dependencies during transition to
+# playbook-based ones.
+proxmox__dependencies_apt: True
+
+proxmox__vm: "{{ proxmox__vm_default + proxmox__vm_group + proxmox__vm_host }}"
+proxmox__vm_default: []
+proxmox__vm_group: []
+proxmox__vm_host: []
+
 # apt-key adv --list-public-keys --with-fingerprint --with-colons
 proxmox_repositories_key:
 

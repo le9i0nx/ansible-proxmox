@@ -12,6 +12,10 @@
     - 'proxmox-ve'
     - 'patch'
 
+- name: install pip proxmoxer
+  pip:
+    name: "proxmoxer"
+
 - name: apply patch
   patch:
     src: 'pvemanagerlib.js.diff'

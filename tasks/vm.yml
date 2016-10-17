@@ -1,0 +1,36 @@
+---
+
+- name: create vm
+  proxmox:
+    vmid: "{{ item.vmid }}"
+    node: "{{ item.node }}"
+    api_user: "{{ item.api_user|default('root@pam') }}"
+    api_password: "{{ item.api_password|default(omit) }}"
+    api_host: "{{ item.api_host|default('localhost') }}"
+    password: "{{ item.password }}"
+    memory: "{{ item.memory|default('512') }}"
+    swap: "{{ item.swap|default('0')}}"
+    disk: "{{ item.disk|default('3') }}"
+    hostname: "{{ item.hostname }}"
+    nameserver: "{{ item.nameserver }}"
+    searchdomain: "{{ item.searchdomain }}"
+    onboot: "{{ item.onboot|default(omit)}}"
+#    mounts: '{"mp0":"local:1,mp=/srv"}'
+    mounts: '{{ item.mounts|default(omit) }}'
+    ostemplate: "{{ item.ostemplate }}"
+    netif: "{{ item.netif|default(omit)}}"
+    state: "present"
+  with_items: "{{ proxmox__vm }}"
+
+- name: start vm
+  proxmox:
+    vmid: "{{ item.vmid }}"
+    node: "{{ item.node }}"
+    api_user: "{{ item.api_user|default('root@pam') }}"
+    api_password: "{{ item.api_password }}"
+    api_host: "{{ item.api_host|default('localhost') }}"
+    state: "started"
+  with_items: "{{ proxmox__vm }}"
+
+
+## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
