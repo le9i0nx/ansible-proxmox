@@ -26,4 +26,12 @@
     state: absent
     path: '/etc/apt/sources.list.d/pve-enterprise.list'
 
+- name: copy cron.hourly cleaning_of_old_backups_of_virtual_machines
+  template:
+    src: "etc/cron.hourly/cleaning_of_old_backups_of_virtual_machines.j2"
+    dest: '/etc/cron.hourly/cleaning_of_old_backups_of_virtual_machines'
+    owner: 'root'
+    group: 'root'
+    mode: '0711'
+
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
