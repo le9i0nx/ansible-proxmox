@@ -12,14 +12,26 @@
     - 'proxmox-ve'
     - 'patch'
 
+- name: install pip proxmoxer
+  pip:
+    name: "proxmoxer"
+
 - name: apply patch
   patch:
     src: 'pvemanagerlib.js.diff'
-    dest: '/usr/share/pve-manager/ext6/pvemanagerlib.js'
+    dest: '/usr/share/pve-manager/js/pvemanagerlib.js'
 
 - name: rm deb list
   file:
     state: absent
     path: '/etc/apt/sources.list.d/pve-enterprise.list'
+
+- name: copy cron.hourly cleaning_of_old_backups_of_virtual_machines
+  template:
+    src: "etc/cron.hourly/cleaning_of_old_backups_of_virtual_machines.j2"
+    dest: '/etc/cron.hourly/cleaning_of_old_backups_of_virtual_machines'
+    owner: 'root'
+    group: 'root'
+    mode: '0711'
 
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2

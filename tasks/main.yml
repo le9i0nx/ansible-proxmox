@@ -9,4 +9,12 @@
     role_proxmox_register_install: ""
   when: role_proxmox_register_install is not defined
 
+- name: config
+  include: config.yml
+  when: proxmox__config|d()
+
+- name: vm create
+  include: vm.yml
+#  when: proxmox__vm|d()
+
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
