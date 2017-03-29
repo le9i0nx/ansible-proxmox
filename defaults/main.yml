@@ -17,7 +17,7 @@ proxmox_repositories_key:
 
 proxmox_repositories:
 
-  - {repo: 'deb http://download.proxmox.com/debian jessie pve-no-subscription'}
+  - {repo: 'deb http://download.proxmox.com/debian jessie pve-no-subscription', mode: '0444' }
   - {repo: 'deb https://enterprise.proxmox.com/debian jessie pve-enterprise', state: 'absent' }
 
 ## vim: foldmethod=marker:tabstop=2:shiftwidth=2:softtabstop=2
