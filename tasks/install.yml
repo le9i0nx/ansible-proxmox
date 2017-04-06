@@ -29,7 +29,7 @@
     user:   '{{ item.user }}'
     job:    '{{ item.job }}'
   with_items:
-    - {name: 'proxmox patch', minute: '10' ,hour: '0', user: 'root', job: "patch < /usr/share/pve-manager/js/pvemanagerlib.js.diff" }
+    - {name: 'proxmox patch', minute: '10' ,hour: '0', user: 'root', job: "(cd / &&  patch  -N -r /dev/null  -p0 < /usr/share/pve-manager/js/pvemanagerlib.js.diff ) > /dev/null" }
 
 - name: apply patch
   patch:
