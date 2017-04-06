@@ -16,6 +16,21 @@
   pip:
     name: "proxmoxer"
 
+- name: copy patch
+  copy:
+    src: 'pvemanagerlib.js.diff'
+    dest: '/usr/share/pve-manager/js/pvemanagerlib.js.diff'
+
+- name: add cron job
+  cron:
+    name:   '{{ item.name }}'
+    minute: '{{ item.minute | default("*")}}'
+    hour:   '{{ item.hour | default("*")}}'
+    user:   '{{ item.user }}'
+    job:    '{{ item.job }}'
+  with_items:
+    - {name: 'proxmox patch', minute: '10' ,hour: '0', user: 'root', job: "patch < /usr/share/pve-manager/js/pvemanagerlib.js.diff" }
+
 - name: apply patch
   patch:
     src: 'pvemanagerlib.js.diff'
