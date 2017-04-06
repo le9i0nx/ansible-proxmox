@@ -1,5 +1,5 @@
---- /usr/share/pve-manager/ext4/pvemanagerlib.js.bak	2016-02-19 15:51:04.722030585 +0500
-+++ /usr/share/pve-manager/ext4/pvemanagerlib.js	2016-02-20 11:09:06.952685605 +0500
+--- /usr/share/pve-manager/js/pvemanagerlib.js.bak	2016-02-19 15:51:04.722030585 +0500
++++ /usr/share/pve-manager/js/pvemanagerlib.js	2016-02-20 11:09:06.952685605 +0500
 @@ -504,7 +504,7 @@
  	    success: function(response, opts) {
  		var data = response.result.data;
